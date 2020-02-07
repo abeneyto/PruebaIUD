@@ -1,6 +1,5 @@
-import DateTimeFormat = Intl.DateTimeFormat;
 
-export class Student {
+export class User {
   private id;
   private name;
   private birthdate: Date;
