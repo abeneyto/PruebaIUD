@@ -15,7 +15,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  AddUser(data: User): Observable<any> {
+  addUser(data: User): Observable<any> {
     const API_URL = `${this.endpoint}`;
     return this.http.post(API_URL, data)
       .pipe(
@@ -23,11 +23,11 @@ export class ApiService {
       );
   }
 
-  GetUsers() {
+  getUsers() {
     return this.http.get(`${this.endpoint}`);
   }
 
-  GetUser(id): Observable<any> {
+  getUser(id): Observable<any> {
     const API_URL = `${this.endpoint}/${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
       map((res: Response) => {
@@ -37,14 +37,14 @@ export class ApiService {
     );
   }
 
-  UpdateUser(id, data: User): Observable<any> {
+  updateUser(id, data: User): Observable<any> {
     const API_URL = `${this.endpoint}/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     );
   }
 
-  DeleteUser(id): Observable<any> {
+  deleteUser(id): Observable<any> {
     const API_URL = `${this.endpoint}/${id}`;
     return this.http.delete(API_URL).pipe(
       catchError(this.errorMgmt)
