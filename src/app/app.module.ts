@@ -9,7 +9,10 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule, MatProgressSpinnerModule} from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,11 @@ import {MatCardModule} from '@angular/material';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

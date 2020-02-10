@@ -1,9 +1,7 @@
 import {Component, ViewChild, OnInit} from '@angular/core';
 import { ApiService } from './../../shared/api.service';
 import { User} from '../../data/user';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-
-
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-list-user',
@@ -13,20 +11,27 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
 export class ListUserComponent implements OnInit {
   userData: any = [];
   dataSource: MatTableDataSource<User>;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   displayedColumns: string[] = ['id', 'name', 'birthdate', 'action'];
+
 
   constructor(private userApi: ApiService) {
       this.userApi.getUsers().subscribe(data => {
       this.userData = data;
       this.dataSource = new MatTableDataSource<User>(this.userData);
-      setTimeout(() => {
-        this.dataSource.paginator = this.paginator;
-      }, 0);
+      this.ngAfterInit();
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
+
+  ngAfterInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    console.log(this.dataSource);
+  }
 
   deleteUser(index: number, e) {
     if (window.confirm('Are you sure')) {
