@@ -20,9 +20,12 @@ import {
   MatTableModule,
   MatPaginatorModule
 } from '@angular/material';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   imports: [
+    MatDatepickerModule,
+    MatMomentDateModule,
     CommonModule,
     MatButtonModule,
     MatToolbarModule,
@@ -62,6 +65,7 @@ import {
   ],
   providers: [
     MatDatepickerModule,
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
   ]
 })
 

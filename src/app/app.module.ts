@@ -9,10 +9,11 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatCardModule, MatProgressSpinnerModule} from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDatepickerModule} from '@angular/material';
+import {MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule} from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [ { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

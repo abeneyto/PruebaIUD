@@ -30,7 +30,6 @@ export class ListUserComponent implements OnInit {
   ngAfterInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    console.log(this.dataSource);
   }
 
   deleteUser(index: number, e) {

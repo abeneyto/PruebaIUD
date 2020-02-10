@@ -1,29 +1,30 @@
 
-<p *ngIf="userData.length <= 0" class="no-data">There is no users.</p>
-<div class="container">
+<h5 *ngIf="userData.length <= 0" class="m-3 text-center">There is no users.</h5>
+<div class="container mt-5">
   <div class="mat-elevation-z8">
     <table mat-table  [dataSource]="dataSource" matSort class="m-0 w-100" >
       <ng-container class="mr-2 ml-2 p-4" matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td mat-cell *matCellDef="let element"> <div class="pr-3"> {{element.id}} </div></td>
       </ng-container>
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <td mat-cell *matCellDef="let element"> <div class="pr-3"> {{element.name}} </div></td>
       </ng-container>
 
       <ng-container matColumnDef="birthdate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </th>
-        <td mat-cell *matCellDef="let element"> {{element.birthdate | date: 'dd-MM-yyyy'}} </td>
+        <td mat-cell *matCellDef="let element" class="mr-3">
+          <div class="pr-3">{{element.birthdate | date: 'dd-MM-yyyy'}} </div></td>
       </ng-container>
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef  > Action </th>
         <td mat-cell *matCellDef="let element; let i = index;" class="p-0">
-          <button mat-raised-button color="white" class="push-right"
+          <button mat-button color="white" class="push-right"
                   [routerLink]="['/edit-user/', element.id]">Edit</button>
-          <button mat-raised-button color="white" (click)="deleteUser(i, element)">Delete</button>
+          <button mat-button color="white" (click)="deleteUser(i, element)" class="text-danger" >Delete</button>
         </td>
       </ng-container>
 
@@ -31,14 +32,13 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <button mat-raised-button color="white" class="push-right"
-                [routerLink]="['/add-user/']">New user</button>
+    <div class="d-flex flex-wrap">
+        <button  mat-icon-button color="white"  class="push-right m-1"  [routerLink]="['/add-user/']">
+          <mat-icon>add</mat-icon>
+        </button>
         <span class="example-spacer"></span>
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="w-75 m-0" >
         </mat-paginator>
-      </mat-toolbar-row>
-    </mat-toolbar>
+    </div>
   </div>
 </div>

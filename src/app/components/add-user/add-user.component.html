@@ -1,31 +1,31 @@
-<div class="title-group">
-  <h1 class="mat-h1">New user</h1>
-  <mat-divider fxFlex="1 0"></mat-divider>
-</div>
-<div class="inner-wrapper">
-  <form [formGroup]="userForm" (ngSubmit)="insertUserForm()">
-    <mat-card>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name" formControlName="name">
-        <mat-error *ngIf="handleError('name', 'required')">
-          You must provide a<strong> user name.</strong>
-        </mat-error>
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" formControlName="birthdate"
-               (dateChange)="formatDate($event)">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="handleError('birthdate', 'required')">
-          Date of birth is required.
-        </mat-error>
-      </mat-form-field>
-      <div class="full-wrapper button-wrapper">
-        <div class="button-wrapper">
-          <button mat-flat-button color="primary">Create</button>
-        </div>
+<div class="inner-wrapper d-flex justify-content-center flex-wrap m-1 p-4">
+  <div class="title-group col-12">
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="insertUserForm()" class="p-3 m-3 mat-elevation-z4">
+    <h3 class="mat-h1 text-center">New user</h3>
+    <mat-divider fxFlex="1 0" class="mb-3"></mat-divider>
+    <mat-form-field class=" col-12 example-full-width">
+      <input matInput placeholder="Name" formControlName="name">
+      <mat-error *ngIf="handleError('name', 'required')">
+        You must provide a<strong> user name.</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+      <input matInput readonly [matDatepicker]="picker" placeholder="Date of birth" formControlName="birthdate"
+             (dateChange)="formatDate($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="handleError('birthdate', 'required')">
+        Date of birth is required.
+      </mat-error>
+    </mat-form-field>
+    <div class="full-wrapper button-wrapper justify-content-center">
+      <div class="button-wrapper m-2">
+        <button mat-flat-button color="primary">Create</button>
+        <button  mat-flat-button color="white"  class="push-right m-1"  [routerLink]="['/list-user/']">Cancel</button>
       </div>
-    </mat-card>
+    </div>
   </form>
 </div>

@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../data/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../shared/api.service';
+import {getLocaleDateFormat} from '@angular/common';
+import {DateFormatter} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-edit-user',
@@ -43,8 +45,10 @@ export class EditUserComponent implements OnInit {
 
 
   formatDate(e) {
-    const convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.userForm.get('birthdate').setValue(convertDate, {
+    const date = new Date(e.target.value);
+    date.setTime( date.getTime() - new Date().getTimezoneOffset() * 60 * 1000);
+    date.toISOString().substring(0, 10);
+    this.userForm.get('birthdate').setValue( date, {
       onlyself: true
     });
   }
@@ -58,7 +62,7 @@ export class EditUserComponent implements OnInit {
     const user: User = new User();
     user.setId(Number(id));
     user.setBirthdate(this.userForm.get('birthdate').value);
-    user.setName(this.userForm.get('name').value)
+    user.setName(this.userForm.get('name').value);
     if (window.confirm('Are you sure you want to update')) {
       this.api.updateUser(user).subscribe( res => {
         this.ngZone.run(() => this.router.navigateByUrl('/list-user'));
