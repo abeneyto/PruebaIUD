@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import { ApiService } from './../../shared/api.service';
 import { User} from '../../data/user';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
@@ -11,7 +11,6 @@ import { MatPaginator, MatTableDataSource } from '@angular/material';
   styleUrls: ['./list-user.component.sass']
 })
 export class ListUserComponent implements OnInit {
-
   userData: any = [];
   dataSource: MatTableDataSource<User>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
