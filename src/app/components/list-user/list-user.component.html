@@ -31,8 +31,14 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <button mat-raised-button color="white" class="push-right"
+                [routerLink]="['/add-user/']">New user</button>
+        <span class="example-spacer"></span>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="w-75 m-0" >
+        </mat-paginator>
+      </mat-toolbar-row>
+    </mat-toolbar>
   </div>
-  <button mat-raised-button color="white" class="push-right"
-          [routerLink]="['/add-user/']">New user</button>
 </div>

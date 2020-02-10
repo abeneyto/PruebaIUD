@@ -36,7 +36,7 @@ export class ListUserComponent implements OnInit {
   deleteUser(index: number, e) {
     if (window.confirm('Are you sure')) {
       const data = this.dataSource.data;
-      data.splice(index, 1);
+      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
       this.userApi.deleteUser(e.id).subscribe();
     }
