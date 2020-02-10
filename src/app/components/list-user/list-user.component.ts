@@ -14,11 +14,11 @@ export class ListUserComponent implements OnInit {
 
   userData: any = [];
   dataSource: MatTableDataSource<User>;
- @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  displayedColumns: string[] = ['id', 'name', 'birthdate'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  displayedColumns: string[] = ['id', 'name', 'birthdate', 'action'];
 
   constructor(private userApi: ApiService) {
-    this.userApi.getUsers().subscribe(data => {
+      this.userApi.getUsers().subscribe(data => {
       this.userData = data;
       this.dataSource = new MatTableDataSource<User>(this.userData);
       setTimeout(() => {
@@ -32,7 +32,7 @@ export class ListUserComponent implements OnInit {
   deleteUser(index: number, e) {
     if (window.confirm('Are you sure')) {
       const data = this.dataSource.data;
-      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
+      data.splice(index, 1);
       this.dataSource.data = data;
       this.userApi.deleteUser(e.id).subscribe();
     }

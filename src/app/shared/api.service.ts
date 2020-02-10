@@ -37,8 +37,8 @@ export class ApiService {
     );
   }
 
-  updateUser(id, data: User): Observable<any> {
-    const API_URL = `${this.endpoint}/${id}`;
+  updateUser(data: User): Observable<any> {
+    const API_URL = `${this.endpoint}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     );

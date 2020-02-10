@@ -9,6 +9,7 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatCardModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
