@@ -35,8 +35,10 @@ export class AddUserComponent implements OnInit {
 
 
   formatDate(e) {
-    const convertDate = new Date(e.target.value).toISOString().substring(0, 10);
-    this.userForm.get('birthdate').setValue(convertDate, {
+    const date = new Date(e.target.value);
+    date.setTime( date.getTime() - new Date().getTimezoneOffset() * 60 * 1000);
+    date.toISOString().substring(0, 10);
+    this.userForm.get('birthdate').setValue(date, {
       onlyself: true
     });
   }
